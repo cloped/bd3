@@ -1,0 +1,63 @@
+sudo vim /etc/apt/sources.list.d/pgdg.list
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+OK
+sudo apt-get update
+Hit:1 http://deb.opera.com/opera stable InRelease
+Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease                                           
+Hit:3 https://deb.opera.com/opera-stable stable InRelease                                              
+Hit:4 http://archive.canonical.com/ubuntu bionic InRelease                                             
+Hit:5 http://security.ubuntu.com/ubuntu bionic-security InRelease                                      
+Ign:6 http://packages.linuxmint.com tara InRelease                                                     
+Hit:7 http://archive.ubuntu.com/ubuntu bionic InRelease                                                
+Hit:8 http://packages.microsoft.com/repos/vscode stable InRelease                                      
+Hit:9 http://dl.google.com/linux/chrome/deb stable Release                                             
+Hit:10 http://packages.linuxmint.com tara Release                                                      
+Get:11 http://apt.postgresql.org/pub/repos/apt bionic-pgdg InRelease [41,3 kB]                         
+Hit:12 http://archive.ubuntu.com/ubuntu bionic-updates InRelease                                       
+Hit:14 http://archive.ubuntu.com/ubuntu bionic-backports InRelease                                     
+Hit:16 http://apt.postgresql.org/pub/repos/apt xenial-pgdg InRelease                                   
+Get:18 http://apt.postgresql.org/pub/repos/apt bionic-pgdg/main amd64 Packages [144 kB]                
+Hit:17 https://packagecloud.io/slacktechnologies/slack/debian jessie InRelease                         
+Get:19 http://apt.postgresql.org/pub/repos/apt bionic-pgdg/main i386 Packages [143 kB]
+Fetched 328 kB in 3s (97,2 kB/s)   
+Reading package lists... Done
+sudo apt-get install postgresql-10
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Suggested packages:
+  locales-all
+Recommended packages:
+  sysstat
+The following packages will be upgraded:
+  postgresql-10
+1 upgraded, 0 newly installed, 0 to remove and 495 not upgraded.
+Need to get 4.943 kB of archives.
+After this operation, 8.368 kB of additional disk space will be used.
+Get:1 http://apt.postgresql.org/pub/repos/apt bionic-pgdg/main amd64 postgresql-10 amd64 10.6-1.pgdg18.04+1 [4.943 kB]
+Fetched 4.943 kB in 4s (1.249 kB/s)        
+(Reading database ... 267098 files and directories currently installed.)
+Preparing to unpack .../postgresql-10_10.6-1.pgdg18.04+1_amd64.deb ...
+Unpacking postgresql-10 (10.6-1.pgdg18.04+1) over (10.5-0ubuntu0.18.04) ...
+Setting up postgresql-10 (10.6-1.pgdg18.04+1) ...
+Processing triggers for postgresql-common (190) ...
+supported-versions: WARNING! Unknown distribution: linuxmint
+ubuntu found in ID_LIKE, treating as Ubuntu
+supported-versions: WARNING: Unknown Ubuntu release: 19
+Building PostgreSQL dictionaries from installed myspell/hunspell packages...
+  de_at_frami
+  de_ch_frami
+  de_de_frami
+  en_au
+  en_ca
+  en_gb
+  en_us
+  en_za
+  es_es
+  fr
+  it_it
+  pt_br
+  pt_pt
+  ru_ru
+Removing obsolete dictionary files:
+
