@@ -1,7 +1,7 @@
-sudo vim /etc/apt/sources.list.d/pgdg.list
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+$sudo vim /etc/apt/sources.list.d/pgdg.list
+$wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 OK
-sudo apt-get update
+$sudo apt-get update
 Hit:1 http://deb.opera.com/opera stable InRelease
 Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease                                           
 Hit:3 https://deb.opera.com/opera-stable stable InRelease                                              
@@ -21,7 +21,7 @@ Hit:17 https://packagecloud.io/slacktechnologies/slack/debian jessie InRelease
 Get:19 http://apt.postgresql.org/pub/repos/apt bionic-pgdg/main i386 Packages [143 kB]
 Fetched 328 kB in 3s (97,2 kB/s)   
 Reading package lists... Done
-sudo apt-get install postgresql-10
+$sudo apt-get install postgresql-10
 Reading package lists... Done
 Building dependency tree       
 Reading state information... Done
