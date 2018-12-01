@@ -1,0 +1,63 @@
+GENERATING TABLES
+$unzip 0dd22b29-54e4-43ba-9d44-2d9b1f7ce8f3-tpc-h-tool.zip
+$cd 2.17.3/dbgen
+$vim makefile.suite (and change CC=gcc DATABASE=ORACLE MACHINE=LINUX WORKLOAD=TPCH)
+$cp makefile.suite Makefile
+$make
+$./dbgen -s 1
+TPC-H Population Generator (Version 2.17.3)
+Copyright Transaction Processing Performance Council 1994 - 2010
+
+INCORPOTATING TO POSTGRES
+$for i in `ls *.tbl`; do sed 's/|$//' $i > ${i/tbl/csv}; echo $i; done; (to import via csv to postgres)
+$sudo -u postgres psql
+postgres=# create database tpch;
+CREATE DATABASE
+postgres=# \c tpch;
+psql (10.5 (Ubuntu 10.5-0ubuntu0.18.04), server 10.6 (Ubuntu 10.6-1.pgdg18.04+1))
+You are now connected to database "tpch" as user "postgres".
+postgres=# \q
+$sudo cp ~/Documents/ufam/trab3bd/2.17.3/dbgen/*.csv ./ (to get the csvs correctely, you may need to do mkdir manually to this folders)
+$sudo -u postgres psql -d tpch
+tpch=# \i /home/cloped/Documents/ufam/trab3bd/tpch-build-db.sql
+BEGIN
+CREATE TABLE
+COPY 200000
+COMMIT
+BEGIN
+CREATE TABLE
+COPY 5
+COMMIT
+BEGIN
+CREATE TABLE
+COPY 25
+COMMIT
+BEGIN
+CREATE TABLE
+COPY 10000
+COMMIT
+BEGIN
+CREATE TABLE
+COPY 150000
+COMMIT
+BEGIN
+CREATE TABLE
+COPY 800000
+COMMIT
+BEGIN
+CREATE TABLE
+COPY 1500000
+COMMIT
+BEGIN
+CREATE TABLE
+COPY 6001215
+COMMIT
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+
