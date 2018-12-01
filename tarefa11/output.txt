@@ -1,0 +1,12 @@
+postgres=# create database cinema;
+CREATE DATABASE
+postgres=# \c cinema 
+psql (10.5 (Ubuntu 10.5-0ubuntu0.18.04), server 10.6 (Ubuntu 10.6-1.pgdg18.04+1))
+You are now connected to database "cinema" as user "postgres".
+cinema=# CREATE TABLE t (k serial PRIMARY KEY, v integer);
+CREATE TABLE
+cinema=# INSERT INTO t(v)
+cinema-# SELECT trunc(random() * 10) FROM generate_series(1,100000);
+INSERT 0 100000
+cinema=# 
+
