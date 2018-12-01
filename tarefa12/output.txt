@@ -1,0 +1,8 @@
+cinema=# SELECT relname, relpages, reltuples FROM pg_class WHERE relname='t';
+ relname | relpages | reltuples 
+---------+----------+-----------
+ t       |      443 |    100000
+(1 row)
+
+cinema=# 
+
