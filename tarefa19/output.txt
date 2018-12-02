@@ -1,0 +1,17 @@
+cinema=# explain verbose select votes from movie where votes > 33178;
+                                      QUERY PLAN                                      
+--------------------------------------------------------------------------------------
+ Index Only Scan using movie_votes on public.movie  (cost=0.28..8.51 rows=13 width=4)
+   Output: votes
+   Index Cond: (movie.votes > 33178)
+(3 rows)
+
+cinema=# explain select votes from movie where yr < 1998;
+                       QUERY PLAN                        
+---------------------------------------------------------
+ Seq Scan on movie  (cost=0.00..38.05 rows=1503 width=4)
+   Filter: (yr < 1998)
+(2 rows)
+
+O índice não é sempre usado porque em certos casos é o postgres consegue detectar que é mais rápido não usá-lo mesmo quando não pareça. O número de linhas retornadas pode variar baseado em variáveis específicas de cada consulta. Por exemplo, pode ser correto usar o index para uma query select * from foo where bar =1, e ainda assim não usar na query select * from foo where bar = 2, se por exemplo existir mais linhas com o valor 2. Quando isso acontece uma busca sequencial é mt mais rápida do que o index scan, então o query planner escolhe a melhor estratégia.
+
