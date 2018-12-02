@@ -1,0 +1,29 @@
+cinema=# explain SELECT title FROM movie WHERE title LIKE 'I%';
+                       QUERY PLAN                       
+--------------------------------------------------------
+ Seq Scan on movie  (cost=0.00..38.05 rows=18 width=16)
+   Filter: ((title)::text ~~ 'I%'::text)
+(2 rows)
+
+Time: 0,856 ms
+
+cinema=# explain SELECT title FROM movie WHERE substr(title, 1, 1) = 'I';
+                      QUERY PLAN                       
+-------------------------------------------------------
+ Seq Scan on movie  (cost=0.00..42.66 rows=9 width=16)
+   Filter: (substr((title)::text, 1, 1) = 'I'::text)
+(2 rows)
+
+Time: 0,896 ms
+
+cinema=# explain SELECT title FROM movie WHERE title LIKE '%A';
+                       QUERY PLAN                       
+--------------------------------------------------------
+ Seq Scan on movie  (cost=0.00..38.05 rows=18 width=16)
+   Filter: ((title)::text ~~ '%A'::text)
+(2 rows)
+
+Time: 0,853 ms
+
+As 3 querys tem custo bastante parecido por apenas realizarem um filter após um Seq Scan. E o índice sobre title não foi utilizado em nenhuma delas, umas vez que não houve nenhum index scan.
+
