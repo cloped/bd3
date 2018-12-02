@@ -1,0 +1,84 @@
+cinema=# CREATE TABLE t (k serial PRIMARY KEY, v integer);
+CREATE TABLE
+cinema=# INSERT INTO t(v)                                 
+SELECT trunc(random() * 10) FROM generate_series(1,100000);
+INSERT 0 100000
+
+cinema=# alter table t set ( fillfactor = 60 );
+ALTER TABLE
+cinema=# vacuum FULL t;
+VACUUM
+
+cinema=# create index idx_v on t (v);
+CREATE INDEX
+
+cinema=# select * from t;
+Time: 43,174 ms
+
+cinema=# alter table t set ( fillfactor = 80 );
+ALTER TABLE
+cinema=# vacuum FULL t;
+VACUUM
+
+cinema=# select * from t;
+Time: 45,912 ms
+
+cinema=# alter table t set ( fillfactor = 90 );
+ALTER TABLE
+cinema=# vacuum FULL t;
+VACUUM
+
+cinema=# select * from t;
+Time: 42,381 ms
+
+cinema=# alter table t set ( fillfactor = 100 );
+ALTER TABLE
+cinema=# vacuum FULL t;
+VACUUM
+
+cinema=# select * from t;
+Time: 49,645 ms
+
+cinema=# drop table t;
+DROP TABLE
+cinema=# CREATE TABLE t (k serial PRIMARY KEY, v integer);
+CREATE TABLE
+cinema=# INSERT INTO t(v)                   
+cinema-# SELECT trunc(random() * 10) FROM generate_series(1,1000000);
+INSERT 0 1000000
+
+cinema=# create index idx_v on t (v);
+CREATE INDEX
+
+cinema=# alter table t set ( fillfactor = 60 );
+ALTER TABLE
+cinema=# vacuum FULL t;
+VACUUM
+
+cinema=# select * from t;
+Time: 414,893 ms
+
+cinema=# alter table t set ( fillfactor = 80 );
+ALTER TABLE
+cinema=# vacuum FULL t;
+VACUUM
+
+cinema=# select * from t;
+Time: 367,017 ms
+
+cinema=# alter table t set ( fillfactor = 90 );
+ALTER TABLE
+cinema=# vacuum FULL t;
+VACUUM
+
+cinema=# select * from t;
+Time: 397,380 ms
+
+cinema=# alter table t set ( fillfactor = 100 );
+ALTER TABLE
+cinema=# vacuum FULL t;
+VACUUM
+
+cinema=# select * from t;
+Time: 390,704 ms
+
