@@ -1,0 +1,48 @@
+cinema=# select * from t;
+Time: 43,444 ms
+cinema=# select * from t;
+Time: 46,131 ms
+
+cinema=# create index idx_v on t (v);
+CREATE INDEX
+Time: 222,967 ms
+
+cinema=# select * from t;
+Time: 49,193 ms
+cinema=# select * from t;
+Time: 44,099 ms
+
+cinema=# reindex table t;
+REINDEX
+Time: 368,347 ms
+
+cinema=# drop table t;
+DROP TABLE
+Time: 58,204 ms
+cinema=# CREATE TABLE t (k serial PRIMARY KEY, v integer);
+CREATE TABLE
+Time: 110,009 ms
+cinema=# INSERT INTO t(v)
+SELECT trunc(random() * 10) FROM generate_series(1,1000000);
+INSERT 0 1000000
+Time: 6917,614 ms (00:06,918)
+
+cinema=# select * from t;
+Time: 429,766 ms
+cinema=# select * from t;
+Time: 360,989 ms
+
+cinema=# create index idx_v on t (v);
+CREATE INDEX
+Time: 1511,020 ms (00:01,511)
+
+cinema=# select * from t;
+Time: 361,388 ms
+cinema=# select * from t;
+Time: 366,845 ms
+
+cinema=# reindex table t;
+REINDEX
+Time: 2383,315 ms (00:02,383)
+
+
