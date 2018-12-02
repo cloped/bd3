@@ -1,0 +1,18 @@
+cinema=# explain SELECT title FROM movie WHERE votes < 1000;
+                                 QUERY PLAN                                  
+-----------------------------------------------------------------------------
+ Index Scan using movie_votes on movie  (cost=0.28..20.04 rows=329 width=16)
+   Index Cond: (votes < 1000)
+(2 rows)
+
+Time: 1,154 ms
+cinema=# explain SELECT title FROM movie WHERE votes > 40000;
+                                QUERY PLAN                                
+--------------------------------------------------------------------------
+ Index Scan using movie_votes on movie  (cost=0.28..8.42 rows=8 width=16)
+   Index Cond: (votes > 40000)
+(2 rows)
+
+Time: 1,045 ms
+
+Selecionam a mesma quantidade de linhas, possuem a mesma seletividade. 
