@@ -1,0 +1,29 @@
+Performance Specifications
+Rotational Speed	5,400 RPM (nominal)
+Buffer Size	16 MB
+Load/unload Cycles	600,000 minimum
+Transfer Rates	Buffer To Host (Serial ATA): 3 Gb/s (Max)
+Internal Data Rate 147 MBps
+Drive Transfer Rate 300 MBps (external)
+
+Physical Specifications
+Formatted Capacity	500,107 MB
+Capacity	500 GB
+Interface	SATA 3 Gb/s
+Form Factor	2.5-inch Drive
+User Sectors Per Drive	976,773,168
+
+Physical Dimensions
+Height	0.27 Inches
+Length	3.94 Inches
+Width	2.75 Inches
+Weight	0.20 Pounds
+
+Electrical Specifications
+Current Requirements (Power Dissipation)	
+Read/Write : 1.4 Watts
+Idle : 0.8 Watts
+Standby : 0.10 Watts
+Sleep : 0.10 Watts
+
+
