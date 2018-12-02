@@ -1,0 +1,146 @@
+$ uname -a
+Linux kct 4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+
+$ sudo lshw
+kct
+    description: Notebook
+    product: K46CB (ASUS-NotebookSKU)
+    vendor: ASUSTeK COMPUTER INC.
+    version: 1.0
+    serial: E6N0B202245924A
+    width: 64 bits
+    capabilities: smbios-2.7 dmi-2.7 smp vsyscall32
+    configuration: boot=normal chassis=notebook family=K sku=ASUS-NotebookSKU uuid=DF020000-0000-0080-FFFF-10C37BC17974
+  *-core
+       description: Motherboard
+       product: K46CB
+       vendor: ASUSTeK COMPUTER INC.
+       physical id: 0
+       version: 1.0
+       serial: BSN12345678901234567
+       slot: MIDDLE
+     *-firmware
+          description: BIOS
+          vendor: American Megatrends Inc.
+          physical id: 0
+          version: K46CB.207
+          date: 05/17/2013
+          size: 64KiB
+          capacity: 6080KiB
+          capabilities: pci upgrade shadowing cdboot bootselect socketedrom edd int13floppy1200 int13floppy720 int13floppy2880 int5printscreen int9keyboard int14serial int17printer acpi usb smartbattery biosbootspecification uefi
+     *-cache:0
+          description: L2 cache
+          physical id: 8
+          slot: CPU Internal L2
+          size: 512KiB
+          capacity: 512KiB
+          capabilities: internal write-through unified
+          configuration: level=2
+     *-cache:1
+          description: L1 cache
+          physical id: 9
+          slot: CPU Internal L1
+          size: 128KiB
+          capacity: 128KiB
+          capabilities: internal write-through data
+          configuration: level=1
+     *-cache:2
+          description: L3 cache
+          physical id: a
+          slot: CPU Internal L3
+          size: 3MiB
+          capacity: 3MiB
+          capabilities: internal write-back unified
+          configuration: level=3
+     *-memory
+          description: System Memory
+          physical id: b
+          slot: System board or motherboard
+          size: 6GiB
+        *-bank:0
+             description: SODIMM DDR3 Synchronous 1600 MHz (0,6 ns)
+             product: SH564128FJ8NWRNSQR
+             vendor: AMD
+             physical id: 0
+             serial: 03260ABB
+             slot: ChannelA-DIMM0
+             size: 4GiB
+             width: 64 bits
+             clock: 1600MHz (0.6ns)
+        *-bank:1
+             description: DIMM [empty]
+             product: [Empty]
+             vendor: [Empty]
+             physical id: 1
+             serial: [Empty]
+             slot: ChannelA-DIMM1
+        *-bank:2
+             description: SODIMM DDR3 Synchronous 1600 MHz (0,6 ns)
+             product: SH564568FJ8NZRNSDR
+             vendor: AMD
+             physical id: 2
+             serial: 0325D892
+             slot: ChannelB-DIMM0
+             size: 2GiB
+             width: 64 bits
+             clock: 1600MHz (0.6ns)
+        *-bank:3
+             description: DIMM [empty]
+             product: [Empty]
+             vendor: [Empty]
+             physical id: 3
+             serial: [Empty]
+             slot: ChannelB-DIMM1
+     *-cpu
+          description: CPU
+          product: Intel(R) Core(TM) i5-3317U CPU @ 1.70GHz
+          vendor: Intel Corp.
+          physical id: c
+          bus info: cpu@0
+          version: Intel(R) Core(TM) i5-3317U CPU @ 1.70GHz
+          slot: SOCKET 0
+          size: 1256MHz
+          capacity: 3800MHz
+          width: 64 bits
+          clock: 100MHz
+          capabilities: x86-64 fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts cpufreq
+          configuration: cores=2 enabledcores=2 threads=4
+
+*-storage
+             description: SATA controller
+             product: 7 Series Chipset Family 6-port SATA Controller [AHCI mode]
+             vendor: Intel Corporation
+             physical id: 1f.2
+             bus info: pci@0000:00:1f.2
+             version: 04
+             width: 32 bits
+             clock: 66MHz
+             capabilities: storage msi pm ahci_1.0 bus_master cap_list
+             configuration: driver=ahci latency=0
+             resources: irq:29 ioport:f0b0(size=8) ioport:f0a0(size=4) ioport:f090(size=8) ioport:f080(size=4) ioport:f060(size=32) memory:f7a1e000-f7a1e7ff
+
+ *-disk
+             description: ATA Disk
+             product: WDC WD5000LPVX-8
+             vendor: Western Digital
+             physical id: 0.0.0
+             bus info: scsi@0:0.0.0
+             logical name: /dev/sda
+             version: 1A01
+             serial: WD-WXQ1E93RPWE4
+             size: 465GiB (500GB)
+             capabilities: gpt-1.00 partitioned partitioned:gpt
+             configuration: ansiversion=5 guid=d0a007ac-2e5a-49df-b48e-d97846762368 logicalsectorsize=512 sectorsize=4096
+ *-volume:2
+                description: EXT4 volume
+                vendor: Linux
+                physical id: 3
+                bus info: scsi@0:0.0.0,3
+                logical name: /dev/sda3
+                logical name: /
+                version: 1.0
+                serial: af846ebc-bfef-4689-ad68-a9302a5e77ed
+                size: 298GiB
+                capabilities: journaled extended_attributes large_files huge_files dir_nlink recover 64bit extents ext4 ext2 initialized
+                configuration: created=2018-09-11 06:59:43 filesystem=ext4 lastmountpoint=/ modified=2018-11-30 06:32:06 mount.fstype=ext4 mount.options=rw,relatime,errors=remount-ro,data=ordered mounted=2018-11-30 06:32:13
+
