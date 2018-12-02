@@ -1,0 +1,28 @@
+cinema=# explain SELECT title FROM movie WHERE votes >= (SELECT MAX(votes) FROM movie);
+                                                       QUERY PLAN                                                        
+-------------------------------------------------------------------------------------------------------------------------
+ Index Scan using movie_votes on movie  (cost=0.62..35.38 rows=615 width=16)
+   Index Cond: (votes >= $1)
+   InitPlan 2 (returns $1)
+     ->  Result  (cost=0.33..0.34 rows=1 width=4)
+           InitPlan 1 (returns $0)
+             ->  Limit  (cost=0.28..0.33 rows=1 width=4)
+                   ->  Index Only Scan Backward using movie_votes on movie movie_1  (cost=0.28..94.55 rows=1844 width=4)
+                         Index Cond: (votes IS NOT NULL)
+(8 rows)
+
+Time: 1,168 ms
+
+cinema=# explain SELECT title FROM movie WHERE votes >= ALL (SELECT votes FROM movie) ;
+                                  QUERY PLAN                                   
+-------------------------------------------------------------------------------
+ Seq Scan on movie  (cost=0.00..43620.99 rows=922 width=16)
+   Filter: (SubPlan 1)
+   SubPlan 1
+     ->  Materialize  (cost=0.00..42.66 rows=1844 width=4)
+           ->  Seq Scan on movie movie_1  (cost=0.00..33.44 rows=1844 width=4)
+(5 rows)
+
+Time: 0,487 ms
+
+A consulta SELECT title FROM movie WHERE votes >= ALL (SELECT votes FROM movie) ; é 2 vezes mais rápida do que a SELECT title FROM movie WHERE votes >= (SELECT MAX(votes) FROM movie);. Conforme explicado na tarefa 19 um Seq Scan pode ser muito mais eficiente do que um Index Scan.
