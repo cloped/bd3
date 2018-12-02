@@ -1,0 +1,28 @@
+cinema=# explain SELECT title FROM movie WHERE votes > (SELECT votes FROM movie WHERE title = 'Star
+cinema'# Wars');
+                                       QUERY PLAN                                        
+-----------------------------------------------------------------------------------------
+ Index Scan using movie_votes on movie  (cost=8.57..43.34 rows=615 width=16)
+   Index Cond: (votes > $0)
+   InitPlan 1 (returns $0)
+     ->  Index Scan using movie_title on movie movie_1  (cost=0.28..8.29 rows=1 width=4)
+           Index Cond: ((title)::text = 'Star
+ Wars'::text)
+(6 rows)
+
+Time: 1,102 ms
+
+cinema=# explain SELECT m1.title FROM movie m1, movie m2 WHERE m1.votes > m2.votes AND m2.title =
+cinema-# 'Star Wars';
+                                      QUERY PLAN                                      
+--------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.56..49.49 rows=615 width=16)
+   ->  Index Scan using movie_title on movie m2  (cost=0.28..8.29 rows=1 width=4)
+         Index Cond: ((title)::text = 'Star Wars'::text)
+   ->  Index Scan using movie_votes on movie m1  (cost=0.28..35.04 rows=615 width=20)
+         Index Cond: (votes > m2.votes)
+(5 rows)
+
+Time: 1,170 ms
+
+Não existe muita diferença nos planos de consulta, as duas utilizam index scan de formas parecidas, o que torna o tempo de consulta próximo.
